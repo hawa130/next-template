@@ -1,11 +1,14 @@
-import type { Metadata } from 'next'
 import '@/styles/globals.scss'
-import { Inter } from 'next/font/google'
+import type { Metadata } from 'next'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ReactNode } from 'react'
+
 import { ThemeProvider } from '@/providers/theme-provider'
 import { Toaster } from '@/components/toaster'
+import { cn } from '@/lib/utils'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+const JBMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={cn(inter.variable, JBMono.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Toaster />
