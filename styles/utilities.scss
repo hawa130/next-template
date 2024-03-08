@@ -1,0 +1,9 @@
+@layer utilities {
+  .self-pointer-events-none {
+    @apply pointer-events-none;
+
+    & > :not(.pointer-events-none) {
+      @apply pointer-events-auto;
+    }
+  }
+}

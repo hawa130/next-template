@@ -1,0 +1,99 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+
+  --card: 0 0% 100%;
+  --card-fg: 0 0% 3.9%;
+
+  --popover: 0 0% 100%;
+  --popover-fg: 0 0% 3.9%;
+
+  --primary: 172 66% 46.8%;
+  --primary-fg: 0 0% 3.9%;
+
+  --secondary: 0 0% 96.1%;
+  --secondary-fg: 0 0% 9%;
+
+  --muted: 0 0% 96.1%;
+  --muted-fg: 0 0% 45.1%;
+
+  --accent: 0 0% 94.5%;
+  --accent-fg: 0 0% 9%;
+
+  --solid: 0 0% 9%;
+  --solid-fg: 0 0% 98%;
+
+  --destructive: 359 100% 97%;
+  --destructive-fg: 360 100% 45%;
+  --destructive-border: 359 100% 94%;
+
+  --warning: 49 100% 97%;
+  --warning-fg: 31 92% 45%;
+  --warning-border: 49 91% 91%;
+
+  --success: 143 85% 96%;
+  --success-fg: 140 100% 27%;
+  --success-border: 145 92% 91%;
+
+  --info: 208 100% 97%;
+  --info-fg: 210 92% 45%;
+  --info-border: 221 91% 91%;
+
+  --body: 0 0% 98%;
+  --button: 0 0% 100%;
+
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 50%;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --card: 0 0% 3.9%;
+  --card-fg: 0 0% 98%;
+
+  --popover: 0 0% 3.9%;
+  --popover-fg: 0 0% 98%;
+
+  --primary: 175 84% 32%;
+  --primary-fg: 0 0% 9%;
+
+  --secondary: 0 0% 14.9%;
+  --secondary-fg: 0 0% 98%;
+
+  --muted: 0 0% 14.9%;
+  --muted-fg: 0 0% 63.9%;
+
+  --accent: 0 0% 14.9%;
+  --accent-fg: 0 0% 98%;
+
+  --solid: 0 0% 98%;
+  --solid-fg: 0 0% 9%;
+
+  --destructive: 358 76% 10%;
+  --destructive-fg: 358 100% 81%;
+  --destructive-border: 357 89% 16%;
+
+  --warning: 64 100% 6%;
+  --warning-fg: 46 87% 65%;
+  --warning-border: 60 100% 12%;
+
+  --success: 150 100% 6%;
+  --success-fg: 150 86% 65%;
+  --success-border: 147 100% 12%;
+
+  --info: 215 100% 6%;
+  --info-fg: 216 87% 65%;
+  --info-border: 223 100% 12%;
+
+  --body: 0 0% 6%;
+  --button: 0 0% 9%;
+
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 75%;
+}

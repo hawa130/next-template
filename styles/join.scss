@@ -1,0 +1,33 @@
+@layer component {
+  .join > :first-child:not(:last-child) {
+    @apply rounded-r-none;
+  }
+
+  .join-vertical > :first-child:not(:last-child) {
+    @apply rounded-b-none;
+  }
+
+  .join > :last-child:not(:first-child) {
+    @apply rounded-l-none;
+  }
+
+  .join-vertical > :last-child:not(:first-child) {
+    @apply rounded-t-none;
+  }
+
+  .join > :not(:first-child):not(:last-child), .join-vertical > :not(:first-child):not(:last-child) {
+    @apply rounded-none;
+  }
+
+  .join > :where(*:not(:first-child)) {
+    @apply -ml-px;
+  }
+
+  .join-vertical > :where(*:not(:first-child)) {
+    @apply -mt-px;
+  }
+
+  .join > *:focus {
+    @apply relative;
+  }
+}

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables";
+@import "./typography";
+@import "./join";
+@import "./utilities";
+
+@layer base {
+  * {
+    @apply border-border ring-offset-background;
+  }
+
+  :focus-visible {
+    @apply outline-ring outline-offset-2 outline-2;
+  }
+
+  body {
+    @apply font-sans text-read bg-background text-foreground antialiased;
+  }
+}

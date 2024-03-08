@@ -1,0 +1,155 @@
+@layer components {
+  .prose.typography {
+    @apply prose-neutral dark:prose-invert;
+
+    // scroll-margin
+    @apply prose-headings:scroll-mt-16 prose-p:scroll-mt-16 prose-li:scroll-mt-16 prose-pre:scroll-mt-16 prose-figure:scroll-mt-16 prose-table:scroll-mt-16;
+
+    // table
+    @apply prose-tr:m-0 prose-tr:border-t prose-tr:p-0 prose-th:border prose-th:px-4 prose-th:py-2 prose-td:border prose-td:px-4 prose-td:py-2;
+
+    // code
+    @apply prose-code:before:content-none prose-code:after:content-none prose-code:font-mono prose-code:font-medium prose-code:rounded prose-code:mx-[0.05em] prose-code:px-[0.3em] prose-code:py-[0.2em] prose-code:bg-muted prose-code:dark:bg-neutral-900 prose-code:text-code-fg;
+
+    // quote
+    @apply prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:pl-5 prose-blockquote:text-foreground/60;
+
+    // anchor
+    @apply prose-a:font-normal prose-a:transition prose-a:text-[--tw-prose-body] prose-a:underline-offset-link prose-a:decoration-foreground/25 hover:prose-a:decoration-primary hover:prose-a:decoration-2 hover:prose-a:text-foreground;
+
+    // figure
+    @apply prose-figcaption:text-center;
+
+    &[data-font-serif] {
+      @apply font-serif font-medium prose-blockquote:font-medium prose-a:font-medium;
+
+      // headings
+      @apply prose-headings:font-bold;
+
+      // strong
+      @apply prose-strong:font-bold;
+    }
+
+    :is(:where(figure):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+      img {
+        @apply rounded mx-auto;
+      }
+
+      &[data-rehype-pretty-code-figure] {
+        @apply relative;
+
+        div[data-rehype-pretty-code-title] {
+          @apply text-xs absolute inset-x-0 top-0 px-3.5 py-1 leading-5;
+
+          & + div[data-code-language-title] > :first-child {
+            @apply invisible;
+          }
+        }
+      }
+    }
+
+    :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+      @apply relative;
+
+      & > a.subheading-anchor {
+        @apply absolute transform top-1/2 left-0 -translate-y-1/2 -translate-x-full opacity-0 transition duration-200 no-underline text-muted-fg/50 px-1.5 py-0.5 hover:text-primary focus:text-primary;
+      }
+
+      & > a.subheading-anchor::before {
+        content: "#";
+      }
+
+      &:hover > a.subheading-anchor,
+      & > a.subheading-anchor:focus {
+        @apply outline-none opacity-100;
+      }
+    }
+
+    :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+      code {
+        counter-reset: line;
+        @apply font-normal;
+
+        & > [data-line]::before {
+          counter-increment: line;
+          content: counter(line);
+          @apply inline-block w-5 mr-4 text-right text-gray-400;
+        }
+
+        &[data-line-numbers-max-digits="2"] > [data-line]::before {
+          @apply w-8;
+        }
+
+        &[data-line-numbers-max-digits="3"] > [data-line]::before {
+          @apply w-12;
+        }
+
+        &[data-theme*=" "], &[data-theme*=" "] span {
+          @apply text-code-fg bg-code-bg dark:text-code-fg-dark dark:bg-code-bg-dark;
+        }
+
+        &[data-language="plaintext"], [data-language="plaintext"] span {
+          @apply text-[--tw-prose-body];
+        }
+      }
+
+      [data-line] {
+        @apply px-2;
+      }
+    }
+  }
+}
+
+@layer components {
+  .search-result {
+    li {
+      @apply list-none;
+    }
+
+    h1, h2 {
+      @apply text-lg font-bold;
+    }
+
+    h3 {
+      @apply text-base font-bold;
+    }
+
+    h4, h5, h6 {
+      @apply font-bold;
+    }
+
+    :not(pre) > code {
+      @apply text-sm font-mono font-medium;
+    }
+
+    table {
+      @apply w-full text-sm;
+
+      tr {
+        @apply m-0 border-t p-0;
+      }
+
+      th {
+        @apply border px-3 py-1.5 text-left font-bold;
+      }
+
+      td {
+        @apply border px-3 py-1.5 text-left;
+      }
+
+      th, td {
+        &[align=center] {
+          @apply text-center;
+        }
+
+        &[align=right] {
+          @apply text-right;
+        }
+      }
+    }
+  }
+}
+
+math {
+  @apply overflow-x-auto;
+}
