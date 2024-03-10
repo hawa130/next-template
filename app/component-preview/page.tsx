@@ -24,13 +24,13 @@ const ButtonPreview = () => {
   })
 
   const form = (
-    <ComponentConfigForm
+    <ComponentConfigForm<ButtonProps>
       items={[
         {
           name: 'variant',
           type: 'select',
           options: ['filled', 'outline', 'dashed', 'ghost', 'light', 'subtle', 'soft'],
-          defaultValue: 'outline',
+          defaultValue: 'filled',
         },
         {
           name: 'color',

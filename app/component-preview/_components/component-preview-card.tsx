@@ -32,25 +32,35 @@ export const ComponentPreviewSection = ({ className, ...props }: HTMLAttributes<
 }
 
 export type ComponentConfigFormItemBase = {
-  name: string
   displayName?: string
   description?: string
 }
 
-export type ComponentConfigFormItem = ComponentConfigFormItemBase & ({
-  type: 'select'
-  options: string[]
-  defaultValue?: string
-} | {
-  type: 'input'
-  placeholder?: string
-  defaultValue?: string
-} | {
-  type: 'switch'
-  defaultValue?: boolean
-})
+export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentConfigFormItemBase & {
+  [P in keyof T]:
+    | { name: P & string; type: 'select'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
+    | { name: P & string; type: 'input'; placeholder?: string; defaultValue?: T[P] & string }
+    | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
+}[keyof T]
+
+type Test = ComponentConfigFormItem<{ name: string, age: string }>
+
+// export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentConfigFormItemBase & ({
+//   name:
+//   type: 'select'
+//   options: string[]
+//   defaultValue?: string
+// } | {
+//   type: 'input'
+//   placeholder?: string
+//   defaultValue?: string
+// } | {
+//   type: 'switch'
+//   defaultValue?: boolean
+// })
 
 interface ComponentConfigFormField extends ComponentConfigFormItemBase, Omit<ComponentProps<typeof FormField>, 'name'> {
+  name: string
 }
 
 const ComponentConfigFormField = ({ name, displayName, description, render, ...props }: ComponentConfigFormField) => {
@@ -70,13 +80,13 @@ const ComponentConfigFormField = ({ name, displayName, description, render, ...p
   )
 }
 
-export interface ComponentConfigFormProps {
-  items: ComponentConfigFormItem[]
-  onChange?: (values: Record<string, string | boolean | undefined>) => void
+export interface ComponentConfigFormProps<T extends Record<string, any>> {
+  items: ComponentConfigFormItem<T>[]
+  onChange?: (values: T) => void
   className?: string
 }
 
-export const ComponentConfigForm = ({ items, onChange, className }: ComponentConfigFormProps) => {
+export const ComponentConfigForm = <T extends Record<string, any>>({ items, onChange, className }: ComponentConfigFormProps<T>) => {
   const defaultValues = useMemo(
     () => Object.fromEntries(items.map(item => [item.name, item.defaultValue])),
     [items],
@@ -84,7 +94,7 @@ export const ComponentConfigForm = ({ items, onChange, className }: ComponentCon
 
   const form = useForm({ defaultValues })
 
-  form.watch((values) => onChange?.({ ...form.getValues(), ...values }))
+  form.watch((values) => onChange?.({ ...form.getValues(), ...values } as T))
 
   return (
     <Form {...form}>
