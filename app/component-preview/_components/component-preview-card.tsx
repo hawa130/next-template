@@ -43,22 +43,6 @@ export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentCo
     | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
 }[keyof T]
 
-type Test = ComponentConfigFormItem<{ name: string, age: string }>
-
-// export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentConfigFormItemBase & ({
-//   name:
-//   type: 'select'
-//   options: string[]
-//   defaultValue?: string
-// } | {
-//   type: 'input'
-//   placeholder?: string
-//   defaultValue?: string
-// } | {
-//   type: 'switch'
-//   defaultValue?: boolean
-// })
-
 interface ComponentConfigFormField extends ComponentConfigFormItemBase, Omit<ComponentProps<typeof FormField>, 'name'> {
   name: string
 }
