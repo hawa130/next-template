@@ -2,10 +2,10 @@ import { useForm } from 'react-hook-form'
 import { ComponentProps, HTMLAttributes, ReactNode, useMemo } from 'react'
 
 import { cn } from '@/lib/utils'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/base/form'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/base/select'
-import { Input } from '@/components/base/input'
-import { Switch } from '@/components/base/switch'
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Input } from '@/components/ui/input'
+import { Switch } from '@/components/ui/switch'
 
 export const ComponentPreviewTitle = ({ children }: { children: ReactNode }) => {
   return <h2 className="text-lg font-medium mb-2">{children}</h2>
@@ -18,17 +18,20 @@ export interface ComponentPreviewCardProps extends HTMLAttributes<HTMLDivElement
 export const ComponentPreviewCard = ({ className, children, form, ...props }: ComponentPreviewCardProps) => {
   return (
     <div
-      className={cn('overflow-auto border rounded-lg grid grid-cols-[minmax(0,1fr)_240px]', className)}
+      className={cn('overflow-auto border rounded-lg',
+        !!form && 'grid grid-cols-[minmax(0,1fr)_240px]',
+        className,
+      )}
       {...props}
     >
       <ComponentPreviewSection>{children}</ComponentPreviewSection>
-      <div className="border-l p-4 bg-body">{form}</div>
+      {!!form && <div className="border-l p-4 bg-body">{form}</div>}
     </div>
   )
 }
 
 export const ComponentPreviewSection = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
-  return <div className={cn('flex items-center justify-center', className)} {...props} />
+  return <div className={cn('flex items-center justify-center p-4', className)} {...props} />
 }
 
 export type ComponentConfigFormItemBase = {
@@ -90,6 +93,7 @@ export const ComponentConfigForm = <T extends Record<string, any>>({ items, onCh
                 <ComponentConfigFormField
                   key={item.name}
                   name={item.name}
+                  displayName={item.displayName}
                   control={form.control}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -110,6 +114,7 @@ export const ComponentConfigForm = <T extends Record<string, any>>({ items, onCh
                 <ComponentConfigFormField
                   key={item.name}
                   name={item.name}
+                  displayName={item.displayName}
                   control={form.control}
                   render={({ field }) => (
                     <FormControl>

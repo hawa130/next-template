@@ -1,21 +1,28 @@
 import { useState } from 'react'
-import { Button, ButtonProps } from '@/components/base/button'
+import { Button, ButtonProps } from '@/components/ui/button'
 import {
   ComponentConfigForm,
   ComponentPreviewCard,
   ComponentPreviewTitle,
-} from '@/app/component-preview/_components/component-preview-card'
+} from '../_components/component-preview-card'
 
 export const ButtonPreview = () => {
   const [buttonProps, setButtonProps] = useState<ButtonProps>({
     variant: 'filled',
-    color: 'primary',
+    color: 'default',
     size: 'md',
+    children: 'Button',
   })
 
   const form = (
     <ComponentConfigForm<ButtonProps>
       items={[
+        {
+          name: 'children',
+          displayName: 'label',
+          type: 'input',
+          defaultValue: 'Button',
+        },
         {
           name: 'variant',
           type: 'select',
@@ -35,6 +42,11 @@ export const ButtonPreview = () => {
           defaultValue: 'md',
         },
         {
+          name: 'loading',
+          type: 'switch',
+          defaultValue: false,
+        },
+        {
           name: 'disabled',
           type: 'switch',
           defaultValue: false,
@@ -48,7 +60,7 @@ export const ButtonPreview = () => {
     <section>
       <ComponentPreviewTitle>Button</ComponentPreviewTitle>
       <ComponentPreviewCard form={form}>
-        <Button {...buttonProps}>Button</Button>
+        <Button {...buttonProps} />
       </ComponentPreviewCard>
     </section>
   )

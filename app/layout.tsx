@@ -4,7 +4,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ReactNode } from 'react'
 
 import { ThemeProvider } from '@/providers/theme-provider'
-import { Toaster } from '@/components/toaster'
+import { Toaster } from '@/components/ui/toaster'
 import { cn } from '@/lib/utils'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
