@@ -35,35 +35,42 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        'text-white': 'hsl(var(--text-white))',
         body: 'hsl(var(--body))',
         button: 'hsl(var(--button))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          fg: 'hsl(var(--primary-fg))',
-        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           fg: 'hsl(var(--secondary-fg))',
         },
+        primary: {
+          light: 'hsl(var(--primary-light))',
+          pale: 'hsl(var(--primary-pale))',
+          DEFAULT: 'hsl(var(--primary))',
+          dark: 'hsl(var(--primary-dark))',
+        },
         destructive: {
+          light: 'hsl(var(--destructive-light))',
+          pale: 'hsl(var(--destructive-pale))',
           DEFAULT: 'hsl(var(--destructive))',
-          fg: 'hsl(var(--destructive-fg))',
-          border: 'hsl(var(--destructive-border))',
+          dark: 'hsl(var(--destructive-dark))',
         },
         warning: {
+          light: 'hsl(var(--warning-light))',
+          pale: 'hsl(var(--warning-pale))',
           DEFAULT: 'hsl(var(--warning))',
-          fg: 'hsl(var(--warning-fg))',
-          border: 'hsl(var(--warning-border))',
+          dark: 'hsl(var(--warning-dark))',
         },
         success: {
+          light: 'hsl(var(--success-light))',
+          pale: 'hsl(var(--success-pale))',
           DEFAULT: 'hsl(var(--success))',
-          fg: 'hsl(var(--success-fg))',
-          border: 'hsl(var(--success-border))',
+          dark: 'hsl(var(--success-dark))',
         },
         info: {
+          light: 'hsl(var(--info-light))',
+          pale: 'hsl(var(--info-pale))',
           DEFAULT: 'hsl(var(--info))',
-          fg: 'hsl(var(--info-fg))',
-          border: 'hsl(var(--info-border))',
+          dark: 'hsl(var(--info-dark))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -71,6 +78,7 @@ const config: Config = {
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
+          dark: 'hsl(var(--accent-dark))',
           fg: 'hsl(var(--accent-fg))',
         },
         solid: {

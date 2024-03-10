@@ -1,15 +1,13 @@
 :root {
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
+  --text-white: 0 0% 100%;
 
   --card: 0 0% 100%;
   --card-fg: 0 0% 3.9%;
 
   --popover: 0 0% 100%;
   --popover-fg: 0 0% 3.9%;
-
-  --primary: 172 66% 46.8%;
-  --primary-fg: 0 0% 3.9%;
 
   --secondary: 0 0% 96.1%;
   --secondary-fg: 0 0% 9%;
@@ -18,26 +16,36 @@
   --muted-fg: 0 0% 45.1%;
 
   --accent: 0 0% 94.5%;
+  --accent-dark: 0 0% 89.8%;
   --accent-fg: 0 0% 9%;
 
   --solid: 0 0% 9%;
   --solid-fg: 0 0% 98%;
 
-  --destructive: 359 100% 97%;
-  --destructive-fg: 360 100% 45%;
-  --destructive-border: 359 100% 94%;
+  --primary-light: 214 100% 97%;
+  --primary-pale: 213 97% 93%;
+  --primary: 221 83% 53%;
+  --primary-dark: 221 83% 43%;
 
-  --warning: 49 100% 97%;
-  --warning-fg: 31 92% 45%;
-  --warning-border: 49 91% 91%;
+  --destructive-light: 359 100% 97%;
+  --destructive-pale: 359 100% 94%;
+  --destructive: 360 100% 45%;
+  --destructive-dark: 360 100% 35%;
 
-  --success: 143 85% 96%;
-  --success-fg: 140 100% 27%;
-  --success-border: 145 92% 91%;
+  --warning-light: 49 100% 97%;
+  --warning-pale: 49 91% 91%;
+  --warning: 31 92% 45%;
+  --warning-dark: 31 92% 35%;
 
-  --info: 208 100% 97%;
-  --info-fg: 210 92% 45%;
-  --info-border: 221 91% 91%;
+  --success-light: 143 85% 96%;
+  --success-pale: 145 92% 91%;
+  --success: 140 100% 27%;
+  --success-dark: 140 100% 17%;
+
+  --info-light: 208 100% 97%;
+  --info-pale: 221 91% 91%;
+  --info: 210 92% 45%;
+  --info-dark: 210 92% 35%;
 
   --body: 0 0% 98%;
   --button: 0 0% 100%;
@@ -52,15 +60,13 @@
 .dark {
   --background: 0 0% 3.9%;
   --foreground: 0 0% 98%;
+  --text-white: 0 0% 3.9%;
 
   --card: 0 0% 3.9%;
   --card-fg: 0 0% 98%;
 
   --popover: 0 0% 3.9%;
   --popover-fg: 0 0% 98%;
-
-  --primary: 175 84% 32%;
-  --primary-fg: 0 0% 9%;
 
   --secondary: 0 0% 14.9%;
   --secondary-fg: 0 0% 98%;
@@ -69,26 +75,36 @@
   --muted-fg: 0 0% 63.9%;
 
   --accent: 0 0% 14.9%;
+  --accent-dark: 0 0% 20%;
   --accent-fg: 0 0% 98%;
 
   --solid: 0 0% 98%;
   --solid-fg: 0 0% 9%;
 
-  --destructive: 358 76% 10%;
-  --destructive-fg: 358 100% 81%;
-  --destructive-border: 357 89% 16%;
+  --primary-light: 226 57% 16%;
+  --primary-pale: 224 64% 22%;
+  --primary: 213 94% 68%;
+  --primary-dark: 213 94% 78%;
 
-  --warning: 64 100% 6%;
-  --warning-fg: 46 87% 65%;
-  --warning-border: 60 100% 12%;
+  --destructive-light: 358 76% 10%;
+  --destructive-pale: 357 89% 16%;
+  --destructive: 358 100% 81%;
+  --destructive-dark: 358 100% 91%;
 
-  --success: 150 100% 6%;
-  --success-fg: 150 86% 65%;
-  --success-border: 147 100% 12%;
+  --warning-light: 64 100% 6%;
+  --warning-pale: 60 100% 12%;
+  --warning: 46 87% 65%;
+  --warning-dark: 46 87% 75%;
 
-  --info: 215 100% 6%;
-  --info-fg: 216 87% 65%;
-  --info-border: 223 100% 12%;
+  --success-light: 150 100% 6%;
+  --success-pale: 147 100% 12%;
+  --success: 150 86% 65%;
+  --success-dark: 150 86% 75%;
+
+  --info-light: 215 100% 6%;
+  --info-pale: 223 100% 12%;
+  --info: 216 87% 65%;
+  --info-dark: 216 87% 75%;
 
   --body: 0 0% 6%;
   --button: 0 0% 9%;
