@@ -1,38 +1,11 @@
+import { ComponentProps, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
-import { ComponentProps, HTMLAttributes, ReactNode, useMemo } from 'react'
 
-import { cn } from '@/lib/utils'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
-
-export const ComponentPreviewTitle = ({ children }: { children: ReactNode }) => {
-  return <h2 className="text-lg font-medium mb-2">{children}</h2>
-}
-
-export interface ComponentPreviewCardProps extends HTMLAttributes<HTMLDivElement> {
-  form?: ReactNode
-}
-
-export const ComponentPreviewCard = ({ className, children, form, ...props }: ComponentPreviewCardProps) => {
-  return (
-    <div
-      className={cn('overflow-auto border rounded-lg',
-        !!form && 'grid grid-cols-[minmax(0,1fr)_240px]',
-        className,
-      )}
-      {...props}
-    >
-      <ComponentPreviewSection>{children}</ComponentPreviewSection>
-      {!!form && <div className="border-l p-4 bg-body">{form}</div>}
-    </div>
-  )
-}
-
-export const ComponentPreviewSection = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
-  return <div className={cn('flex items-center justify-center p-4', className)} {...props} />
-}
 
 export type ComponentConfigFormItemBase = {
   displayName?: string
@@ -41,9 +14,10 @@ export type ComponentConfigFormItemBase = {
 
 export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentConfigFormItemBase & {
   [P in keyof T]:
-    | { name: P & string; type: 'select'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
-    | { name: P & string; type: 'input'; placeholder?: string; defaultValue?: T[P] & string }
-    | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
+  | { name: P & string; type: 'select'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
+  | { name: P & string; type: 'input'; placeholder?: string; defaultValue?: T[P] & string }
+  | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
+  | { name: P & string; type: 'number'; defaultValue?: T[P] & number }
 }[keyof T]
 
 interface ComponentConfigFormField extends ComponentConfigFormItemBase, Omit<ComponentProps<typeof FormField>, 'name'> {
@@ -73,7 +47,11 @@ export interface ComponentConfigFormProps<T extends Record<string, any>> {
   className?: string
 }
 
-export const ComponentConfigForm = <T extends Record<string, any>>({ items, onChange, className }: ComponentConfigFormProps<T>) => {
+export const ComponentConfigForm = <T extends Record<string, any>>({
+  items,
+  onChange,
+  className,
+}: ComponentConfigFormProps<T>) => {
   const defaultValues = useMemo(
     () => Object.fromEntries(items.map(item => [item.name, item.defaultValue])),
     [items],
@@ -119,6 +97,20 @@ export const ComponentConfigForm = <T extends Record<string, any>>({ items, onCh
                   render={({ field }) => (
                     <FormControl>
                       <Input placeholder={item.placeholder} {...field} />
+                    </FormControl>
+                  )}
+                />
+              )
+            case 'number':
+              return (
+                <ComponentConfigFormField
+                  key={item.name}
+                  name={item.name}
+                  displayName={item.displayName}
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormControl>
+                      <Input type="number" {...field} />
                     </FormControl>
                   )}
                 />

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, ButtonProps } from '@/components/ui/button'
+import { Badge, BadgeProps } from '@/components/ui/badge'
 import {
   ComponentConfigForm,
   ComponentPreviewCard,
@@ -7,27 +7,27 @@ import {
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
 
-export const ButtonPreview = () => {
-  const [buttonProps, setButtonProps] = useState<ButtonProps>({
+export const BadgePreview = () => {
+  const [props, setProps] = useState<BadgeProps>({
+    children: 'Badge',
     variant: 'filled',
     color: 'default',
     size: 'md',
-    children: 'Button',
+    circle: false,
   })
 
   const form = (
-    <ComponentConfigForm<ButtonProps>
+    <ComponentConfigForm<BadgeProps>
       items={[
         {
           name: 'children',
-          displayName: 'label',
           type: 'input',
-          defaultValue: 'Button',
+          defaultValue: 'Badge',
         },
         {
           name: 'variant',
           type: 'select',
-          options: ['filled', 'light', 'soft', 'outline', 'dashed', 'ghost', 'subtle'],
+          options: ['filled', 'light', 'outline', 'dashed'],
           defaultValue: 'filled',
         },
         {
@@ -39,31 +39,26 @@ export const ButtonPreview = () => {
         {
           name: 'size',
           type: 'select',
-          options: ['2xs', 'xs', 'sm', 'md', 'lg'],
+          options: ['xs', 'sm', 'md', 'lg', 'xl'],
           defaultValue: 'md',
         },
         {
-          name: 'loading',
-          type: 'switch',
-          defaultValue: false,
-        },
-        {
-          name: 'disabled',
+          name: 'circle',
           type: 'switch',
           defaultValue: false,
         },
       ]}
-      onChange={setButtonProps}
+      onChange={setProps}
     />
   )
 
   return (
     <section>
       <ComponentPreviewHeader>
-        <ComponentPreviewTitle>Button</ComponentPreviewTitle>
+        <ComponentPreviewTitle>Badge</ComponentPreviewTitle>
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
-        <Button {...buttonProps} />
+        <Badge {...props} />
       </ComponentPreviewCard>
     </section>
   )

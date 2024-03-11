@@ -6,16 +6,16 @@ import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         filled: '',
         outline: 'border',
         dashed: 'border border-dashed',
-        ghost: 'bg-transparent hover:bg-accent active:bg-accent-dark',
+        ghost: 'hover:bg-accent active:bg-accent-dark',
         light: 'bg-secondary hover:bg-accent active:bg-accent-dark',
-        subtle: 'bg-transparent',
+        subtle: '',
         soft: '',
       },
       color: {
@@ -27,8 +27,8 @@ const buttonVariants = cva(
         info: '',
       },
       size: {
-        '2xs': 'h-4 px-1 text-xs',
-        xs: 'h-6 px-2 text-xs',
+        '2xs': 'h-5 px-2 text-xs font-semibold',
+        xs: 'h-6 px-2.5 text-xs',
         sm: 'h-8 px-3 text-sm',
         md: 'h-9 px-4 text-sm',
         lg: 'h-11 px-5 text-base',
@@ -48,12 +48,12 @@ const buttonVariants = cva(
       {
         variant: ['outline', 'dashed'],
         color: 'default',
-        className: 'border-input bg-button hover:bg-accent hover:text-accent-fg active:bg-accent-dark',
+        className: 'border-input bg-button hover:bg-accent hover:text-accent-fg hover:border-ring active:bg-accent-dark',
       },
       {
         variant: ['ghost', 'subtle'],
         color: 'default',
-        className: 'hover:bg-accent hover:text-accent-fg active:bg-accent-dark',
+        className: 'hover:text-accent-fg',
       },
       {
         variant: 'filled',
