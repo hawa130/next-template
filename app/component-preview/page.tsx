@@ -12,6 +12,7 @@ import { InputPreview } from './_previews/input-preview'
 import { HoverCardPreview } from './_previews/hover-card-preview'
 import { BadgePreview } from './_previews/badge-preview'
 import { SliderPreview } from './_previews/slider-preview'
+import { AlertPreview } from './_previews/alert-preview'
 
 export default function Page() {
   return (
@@ -34,6 +35,7 @@ export default function Page() {
         <InputPreview />
         <BadgePreview />
         <SliderPreview />
+        <AlertPreview />
       </div>
     </main>
   )
