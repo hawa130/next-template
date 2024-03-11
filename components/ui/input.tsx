@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { cva } from 'class-variance-authority'
 
 export const inputWrapperVariants = cva(
-  'flex h-9 w-full rounded-md border border-input bg-button text-sm ring-offset-background focus-within:outline-none focus-within:ring-2 focus-within:ring-ring/60 focus-within:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 transition-colors hover:border-ring [&:not(:focus-within)]:hover:bg-accent'
+  'flex items-center h-9 w-full rounded-md border border-input bg-button px-3 text-sm ring-offset-background focus-within:outline-none focus-within:ring-2 focus-within:ring-ring/60 focus-within:ring-offset-0 [&:has(:disabled)]:cursor-not-allowed [&:has(:disabled)>input]:cursor-not-allowed [&:has(:disabled)]:opacity-50 transition-colors hover:border-ring [&:not(:focus-within)]:hover:bg-accent [&>input]:flex-grow [&>input]:bg-transparent [&>input]:h-full focus-visible:[&>input]:outline-none placeholder:[&>input]:text-muted-fg file:[&>input]:border-0 file:[&>input]:bg-transparent file:[&>input]:text-sm file:[&>input]:font-medium'
 )
 
 export const inputVariants = cva(

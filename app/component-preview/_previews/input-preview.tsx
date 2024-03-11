@@ -5,8 +5,11 @@ import {
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Input } from '@/components/ui/input'
+import { Input, inputWrapperVariants } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { Search } from 'lucide-react'
 
 type PropsForm = { disabled: boolean }
 
@@ -35,8 +38,24 @@ export const InputPreview = () => {
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
         <div className="w-full flex flex-col items-center gap-3">
-          <Input type="email" placeholder="Email" {...props} />
-          <Textarea placeholder="Type your message here." {...props} />
+          <section className="w-full">
+            <div className="w-full text-sm mb-1">Input</div>
+            <Input type="email" placeholder="Email" {...props} />
+          </section>
+          <section className="w-full">
+            <div className="w-full text-sm mb-1">Combined Input</div>
+            <div className="w-full flex join">
+              <label className={cn(inputWrapperVariants(), 'flex-grow')}>
+                <Search className="h-4 w-4 mr-2 text-muted-fg" />
+                <input placeholder="Search..." {...props} />
+              </label>
+              <Button className="flex-shrink-0" size="icon-md" icon={<Search className="h-4 w-4" />} />
+            </div>
+          </section>
+          <section className="w-full">
+            <div className="w-full text-sm mb-1">Textarea</div>
+            <Textarea placeholder="Type your message here." {...props} />
+          </section>
         </div>
       </ComponentPreviewCard>
     </section>

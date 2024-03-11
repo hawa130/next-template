@@ -1,4 +1,4 @@
-@layer component {
+@layer components {
   .join > :first-child:not(:last-child) {
     @apply rounded-r-none;
   }
@@ -27,7 +27,11 @@
     @apply -mt-px;
   }
 
-  .join > *:focus {
-    @apply relative;
+  .join > *:focus, .join > *:focus-within {
+    @apply relative z-[2];
+  }
+
+  .join > *:hover {
+    @apply relative z-[1];
   }
 }
