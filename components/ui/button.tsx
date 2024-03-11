@@ -58,7 +58,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'primary',
-        className: 'bg-primary text-text-white hover:bg-primary/90 active:bg-primary-dark',
+        className: 'bg-primary text-fg-invert hover:bg-primary/90 active:bg-primary-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -83,7 +83,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'destructive',
-        className: 'bg-destructive text-text-white hover:bg-destructive/90 active:bg-destructive-dark',
+        className: 'bg-destructive text-fg-invert hover:bg-destructive/90 active:bg-destructive-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -108,7 +108,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'warning',
-        className: 'bg-warning text-text-white hover:bg-warning/90 active:bg-warning-dark',
+        className: 'bg-warning text-fg-invert hover:bg-warning/90 active:bg-warning-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -133,7 +133,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'success',
-        className: 'bg-success text-text-white hover:bg-success/90 active:bg-success-dark',
+        className: 'bg-success text-fg-invert hover:bg-success/90 active:bg-success-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -158,7 +158,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'info',
-        className: 'bg-info text-text-white hover:bg-info/90 active:bg-info-dark',
+        className: 'bg-info text-fg-invert hover:bg-info/90 active:bg-info-dark',
       },
       {
         variant: ['outline', 'dashed'],

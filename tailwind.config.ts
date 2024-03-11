@@ -35,7 +35,7 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        'text-white': 'hsl(var(--text-white))',
+        'fg-invert': 'hsl(var(--fg-invert))',
         body: 'hsl(var(--body))',
         button: 'hsl(var(--button))',
         secondary: {

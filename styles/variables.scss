@@ -1,7 +1,7 @@
 :root {
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
-  --text-white: 0 0% 100%;
+  --fg-invert: 0 0% 100%;
 
   --card: 0 0% 100%;
   --card-fg: 0 0% 3.9%;
@@ -60,7 +60,7 @@
 .dark {
   --background: 0 0% 3.9%;
   --foreground: 0 0% 98%;
-  --text-white: 0 0% 3.9%;
+  --fg-invert: 0 0% 3.9%;
 
   --card: 0 0% 3.9%;
   --card-fg: 0 0% 98%;
