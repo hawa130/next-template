@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes'
 import { Toaster as Sonner } from 'sonner'
-import { type ComponentProps } from 'react'
+import type { ComponentProps, CSSProperties } from 'react'
 
 type ToasterProps = ComponentProps<typeof Sonner>
 
@@ -17,6 +17,20 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps['theme']}
       className="toaster group"
       toastOptions={{
+        style: {
+          '--error-bg': 'hsl(var(--destructive-light))',
+          '--error-border': 'hsl(var(--destructive-pale))',
+          '--error-text': 'hsl(var(--destructive))',
+          '--warning-bg': 'hsl(var(--warning-light))',
+          '--warning-border': 'hsl(var(--warning-pale))',
+          '--warning-text': 'hsl(var(--warning))',
+          '--success-bg': 'hsl(var(--success-light))',
+          '--success-border': 'hsl(var(--success-pale))',
+          '--success-text': 'hsl(var(--success))',
+          '--info-bg': 'hsl(var(--info-light))',
+          '--info-border': 'hsl(var(--info-pale))',
+          '--info-text': 'hsl(var(--info))',
+        } as CSSProperties,
         classNames: {
           toast:
             'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
