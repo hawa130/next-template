@@ -5,44 +5,134 @@ import { AlertCircle, AlertTriangle, CircleCheck, Info } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const alertVariants = cva(
-  'relative w-full py-3 px-4 [&>svg~*]:pl-6 [&>svg+div]:py-0.5 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
+  'relative w-full py-3 px-4 [&>i~*]:pl-6 [&>i+div]:py-0.5 [&>i]:absolute [&>i]:left-4 [&>i]:top-4 [&>i]:text-foreground',
   {
     variants: {
       variant: {
-        default: 'bg-background text-foreground',
-        secondary: 'bg-secondary text-secondary-fg',
-        destructive: 'border-destructive-pale bg-destructive-light text-destructive [&>svg]:text-destructive',
-        warning: 'border-warning-pale bg-warning-light text-warning [&>svg]:text-warning',
-        success: 'border-success-pale bg-success-light text-success [&>svg]:text-success',
-        info: 'border-info-pale bg-info-light text-info [&>svg]:text-info',
+        outline: 'border rounded-lg',
+        surface: 'border rounded-lg',
+        soft: '',
       },
-      type: {
-        bordered: 'rounded-lg border',
-        borderless: '',
+      color: {
+        default: '',
+        primary: '',
+        destructive: '',
+        warning: '',
+        success: '',
+        info: '',
       },
     },
+    compoundVariants: [
+      {
+        variant: 'outline',
+        color: 'default',
+        className: 'bg-background text-foreground [&>i]:text-foreground',
+      },
+      {
+        variant: ['surface', 'soft'],
+        color: 'default',
+        className: 'bg-secondary text-secondary-fg [&>i]:text-secondary-fg',
+      },
+      {
+        variant: 'outline',
+        color: 'primary',
+        className: 'border-primary text-primary [&>i]:text-primary',
+      },
+      {
+        variant: 'surface',
+        color: 'primary',
+        className: 'border-primary-pale bg-primary-light text-primary [&>i]:text-primary',
+      },
+      {
+        variant: 'soft',
+        color: 'primary',
+        className: 'bg-primary-light text-primary [&>i]:text-primary',
+      },
+      {
+        variant: 'outline',
+        color: 'destructive',
+        className: 'border-destructive text-destructive [&>i]:text-destructive',
+      },
+      {
+        variant: 'surface',
+        color: 'destructive',
+        className: 'border-destructive-pale bg-destructive-light text-destructive [&>i]:text-destructive',
+      },
+      {
+        variant: 'soft',
+        color: 'destructive',
+        className: 'bg-destructive-light text-destructive [&>i]:text-destructive',
+      },
+      {
+        variant: 'outline',
+        color: 'warning',
+        className: 'border-warning text-warning [&>i]:text-warning',
+      },
+      {
+        variant: 'surface',
+        color: 'warning',
+        className: 'border-warning-pale bg-warning-light text-warning [&>i]:text-warning',
+      },
+      {
+        variant: 'soft',
+        color: 'warning',
+        className: 'bg-warning-light text-warning [&>i]:text-warning',
+      },
+      {
+        variant: 'outline',
+        color: 'success',
+        className: 'border-success text-success [&>i]:text-success',
+      },
+      {
+        variant: 'surface',
+        color: 'success',
+        className: 'border-success-pale bg-success-light text-success [&>i]:text-success',
+      },
+      {
+        variant: 'soft',
+        color: 'success',
+        className: 'bg-success-light text-success [&>i]:text-success',
+      },
+      {
+        variant: 'outline',
+        color: 'info',
+        className: 'border-info text-info [&>i]:text-info',
+      },
+      {
+        variant: 'surface',
+        color: 'info',
+        className: 'border-info-pale bg-info-light text-info [&>i]:text-info',
+      },
+      {
+        variant: 'soft',
+        color: 'info',
+        className: 'bg-info-light text-info [&>i]:text-info',
+      },
+    ],
     defaultVariants: {
-      variant: 'default',
-      type: 'bordered',
+      variant: 'surface',
+      color: 'default',
     },
   },
 )
 
-export type AlertProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> & VariantProps<typeof alertVariants> & {
+export type AlertProps =
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'color'>
+  & VariantProps<typeof alertVariants>
+  & {
   icon?: React.ReactNode
   title?: React.ReactNode
-  description?: React.ReactNode
 }
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(({
   title,
-  variant,
-  description,
+  color,
   icon,
+  children,
   ...props
 }, ref) => {
-  const resolvedIcon = icon ?? ((variant) => {
-    switch (variant) {
+  const resolvedIcon = icon ?? ((color) => {
+    switch (color) {
       case 'destructive':
         return <AlertCircle className="h-4 w-4" />
       case 'warning':
@@ -54,13 +144,13 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(({
       default:
         return null
     }
-  })(variant)
+  })(color)
 
   return (
-    <AlertContainer ref={ref} variant={variant} {...props}>
-      {!(!title && !description) && resolvedIcon}
+    <AlertContainer ref={ref} color={color} {...props}>
+      {!(!title && !children) && resolvedIcon && <i className="h-4 w-4">{resolvedIcon}</i>}
       {!!title && <AlertTitle>{title}</AlertTitle>}
-      {!!description && <AlertDescription>{description}</AlertDescription>}
+      {!!children && <AlertDescription>{children}</AlertDescription>}
     </AlertContainer>
   )
 })
@@ -68,12 +158,12 @@ Alert.displayName = 'Alert'
 
 const AlertContainer = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
->(({ className, variant, type, ...props }, ref) => (
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> & VariantProps<typeof alertVariants>
+>(({ className, variant, color, ...props }, ref) => (
   <div
     ref={ref}
     role="alert"
-    className={cn(alertVariants({ variant, type }), className)}
+    className={cn(alertVariants({ variant, color }), className)}
     {...props}
   />
 ))
@@ -85,7 +175,7 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn('my-1 font-medium leading-none tracking-tight', className)}
+    className={cn('my-1 font-medium leading-none', className)}
     {...props}
   />
 ))

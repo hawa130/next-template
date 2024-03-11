@@ -20,7 +20,6 @@ export const ButtonPreview = () => {
       items={[
         {
           name: 'children',
-          displayName: 'label',
           type: 'input',
           defaultValue: 'Button',
         },

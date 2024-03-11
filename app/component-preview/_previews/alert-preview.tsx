@@ -9,10 +9,10 @@ import {
 
 export const AlertPreview = () => {
   const [props, setProps] = useState<AlertProps>({
-    variant: 'default',
-    type: 'bordered',
+    variant: 'surface',
+    color: 'info',
     title: 'Invalid Credentials',
-    description: 'Your session has expired. Please log in again.',
+    children: 'Your session has expired. Please log in again.',
   })
 
   const form = (
@@ -24,21 +24,21 @@ export const AlertPreview = () => {
           defaultValue: 'Invalid Credentials',
         },
         {
-          name: 'description',
+          name: 'children',
           type: 'input',
           defaultValue: 'Your session has expired. Please log in again.',
         },
         {
           name: 'variant',
           type: 'select',
-          options: ['default', 'secondary', 'destructive', 'warning', 'success', 'info'],
-          defaultValue: 'default',
+          options: ['surface', 'outline', 'soft'],
+          defaultValue: 'surface',
         },
         {
-          name: 'type',
+          name: 'color',
           type: 'select',
-          options: ['bordered', 'borderless'],
-          defaultValue: 'bordered',
+          options: ['default', 'primary', 'destructive', 'warning', 'success', 'info'],
+          defaultValue: 'info',
         },
       ]}
       onChange={setProps}
