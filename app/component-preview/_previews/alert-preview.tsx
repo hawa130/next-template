@@ -30,7 +30,7 @@ export const AlertPreview = () => {
         },
         {
           name: 'variant',
-          type: 'select',
+          type: 'radio',
           options: ['surface', 'outline', 'soft'],
           defaultValue: 'surface',
         },

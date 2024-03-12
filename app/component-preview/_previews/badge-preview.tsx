@@ -38,7 +38,7 @@ export const BadgePreview = () => {
         },
         {
           name: 'size',
-          type: 'select',
+          type: 'radio',
           options: ['xs', 'sm', 'md', 'lg', 'xl'],
           defaultValue: 'md',
         },

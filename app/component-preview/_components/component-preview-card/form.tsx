@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
+import { SegmentedControl, SegmentedControlItem } from '@/components/ui/segmented-control'
 
 export type ComponentConfigFormItemBase = {
   displayName?: string
@@ -18,6 +19,7 @@ export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentCo
   | { name: P & string; type: 'input'; placeholder?: string; defaultValue?: T[P] & string }
   | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
   | { name: P & string; type: 'number'; defaultValue?: T[P] & number }
+  | { name: P & string; type: 'radio'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
 }[keyof T]
 
 interface ComponentConfigFormField extends ComponentConfigFormItemBase, Omit<ComponentProps<typeof FormField>, 'name'> {
@@ -111,6 +113,26 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
                   render={({ field }) => (
                     <FormControl>
                       <Input type="number" {...field} />
+                    </FormControl>
+                  )}
+                />
+              )
+            case 'radio':
+              return (
+                <ComponentConfigFormField
+                  key={item.name}
+                  name={item.name}
+                  displayName={item.displayName}
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormControl>
+                      <SegmentedControl
+                        className="grid"
+                        style={{ gridTemplateColumns: `repeat(${item.options.length}, minmax(0, 1fr))` }}
+                        value={field.value} onValueChange={field.onChange}
+                      >
+                        {item.options.map(opt => <SegmentedControlItem value={opt} key={opt}>{opt}</SegmentedControlItem>)}
+                      </SegmentedControl>
                     </FormControl>
                   )}
                 />

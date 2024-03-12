@@ -28,7 +28,7 @@ export const TooltipPreview = () => {
         },
         {
           name: 'align',
-          type: 'select',
+          type: 'radio',
           options: ['start', 'center', 'end'],
           defaultValue: 'center',
         },

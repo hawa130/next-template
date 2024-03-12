@@ -37,7 +37,7 @@ export const ButtonPreview = () => {
         },
         {
           name: 'size',
-          type: 'select',
+          type: 'radio',
           options: ['2xs', 'xs', 'sm', 'md', 'lg'],
           defaultValue: 'md',
         },
