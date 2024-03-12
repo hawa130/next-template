@@ -37,31 +37,45 @@ export const tabsTriggerVariants = cva(
   },
 )
 
+const TabsListVariantContext = React.createContext<{
+  variant?: 'default' | 'line' | 'none' | null
+}>({
+  variant: 'default'
+})
 
 const Tabs = TabsPrimitive.Root
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>
->(({ className, variant, ...props }, ref) => (
+>(({ className, variant, children, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
     className={cn(tabsListVariants({ variant, className }))}
     {...props}
-  />
+  >
+    <TabsListVariantContext.Provider value={{ variant }}>
+      {children}
+    </TabsListVariantContext.Provider>
+  </TabsPrimitive.List>
 ))
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & VariantProps<typeof tabsTriggerVariants>
->(({ className, variant, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(tabsTriggerVariants({ variant, className }))}
-    {...props}
-  />
-))
+>(({ className, variant: customVariant, ...props }, ref) => {
+  const { variant: listVariant } = React.useContext(TabsListVariantContext)
+  const variant = customVariant
+    || (listVariant === 'default' ? 'default' : 'line')
+  return (
+    <TabsPrimitive.Trigger
+      ref={ref}
+      className={cn(tabsTriggerVariants({ variant, className }))}
+      {...props}
+    />
+  )
+})
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 
 const TabsContent = React.forwardRef<

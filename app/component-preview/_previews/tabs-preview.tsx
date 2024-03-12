@@ -13,7 +13,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { cn } from '@/lib/utils'
 
 type FormProps = {
-  variant?: 'default' | 'line'
+  variant?: 'default' | 'line' | 'none'
 }
 
 export const TabsPreview = () => {
@@ -27,7 +27,7 @@ export const TabsPreview = () => {
         {
           name: 'variant',
           type: 'radio',
-          options: ['default', 'line'],
+          options: ['default', 'line', 'none'],
           defaultValue: 'default',
         },
       ]}
@@ -42,9 +42,9 @@ export const TabsPreview = () => {
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
         <Tabs defaultValue="login" className="w-[400px]">
-          <TabsList className="grid w-full grid-cols-2 mb-2" variant={props.variant}>
-            <TabsTrigger variant={props.variant} value="login">Log in</TabsTrigger>
-            <TabsTrigger variant={props.variant} value="signup">Sign up</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 mb-2" {...props}>
+            <TabsTrigger value="login">Log in</TabsTrigger>
+            <TabsTrigger value="signup">Sign up</TabsTrigger>
           </TabsList>
           <TabsContent value="login">
             <div className={cn(props.variant === 'default' && 'border rounded-xl shadow-sm')}>
