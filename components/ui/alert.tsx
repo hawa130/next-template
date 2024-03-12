@@ -5,7 +5,7 @@ import { AlertCircle, AlertTriangle, CircleCheck, Info } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const alertVariants = cva(
-  'relative w-full py-3 px-4 [&>i~*]:pl-6 [&>i+div]:py-0.5 [&>i]:absolute [&>i]:left-4 [&>i]:top-4 [&>i]:text-foreground',
+  'relative w-full py-3 px-4 [&>i~*]:pl-6 [&>i+div]:py-0.5 [&>i+h5+div]:mt-0.5 [&>i]:absolute [&>i]:left-4 [&>i]:top-4 [&>i]:text-foreground',
   {
     variants: {
       variant: {
@@ -175,7 +175,7 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn('my-1 font-medium leading-none', className)}
+    className={cn('font-medium', className)}
     {...props}
   />
 ))
