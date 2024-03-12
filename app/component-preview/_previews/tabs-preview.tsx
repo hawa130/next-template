@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ComponentProps, useState } from 'react'
 import {
   ComponentConfigForm,
   ComponentPreviewCard,
@@ -10,11 +10,8 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { cn } from '@/lib/utils'
 
-type FormProps = {
-  variant?: 'default' | 'line' | 'none'
-}
+type FormProps = Partial<ComponentProps<typeof TabsList>>
 
 export const TabsPreview = () => {
   const [props, setProps] = useState<FormProps>({
@@ -27,7 +24,7 @@ export const TabsPreview = () => {
         {
           name: 'variant',
           type: 'radio',
-          options: ['default', 'line', 'none'],
+          options: ['default', 'line', 'button'],
           defaultValue: 'default',
         },
       ]}
@@ -47,47 +44,43 @@ export const TabsPreview = () => {
             <TabsTrigger value="signup">Sign up</TabsTrigger>
           </TabsList>
           <TabsContent value="login">
-            <div className={cn(props.variant === 'default' && 'border rounded-xl shadow-sm')}>
-              <div className="p-6">
-                <h2 className="text-xl/none font-semibold">Welcome back</h2>
+            <div className="p-6">
+              <h2 className="text-xl/none font-semibold">Welcome back</h2>
+            </div>
+            <div className="p-6 pt-0 space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="login-username" defaultValue="hawa130">Username</Label>
+                <Input id="login-username" />
               </div>
-              <div className="p-6 pt-0 space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="login-username" defaultValue="hawa130">Username</Label>
-                  <Input id="login-username" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="login-password" defaultValue="hawa130">Password</Label>
-                  <Input id="login-password" type="password" />
-                </div>
+              <div className="space-y-1">
+                <Label htmlFor="login-password" defaultValue="hawa130">Password</Label>
+                <Input id="login-password" type="password" />
               </div>
-              <div className="p-6 pt-0">
-                <Button variant="filled" color="primary">Log in</Button>
-              </div>
+            </div>
+            <div className="p-6 pt-0">
+              <Button variant="filled" color="primary">Log in</Button>
             </div>
           </TabsContent>
           <TabsContent value="signup">
-            <div className={cn(props.variant === 'default' && 'border rounded-xl shadow-sm')}>
-              <div className="p-6">
-                <h2 className="text-xl/none font-semibold">Create an account</h2>
+            <div className="p-6">
+              <h2 className="text-xl/none font-semibold">Create an account</h2>
+            </div>
+            <div className="p-6 pt-0 space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="signup-username">Username</Label>
+                <Input id="signup-username" defaultValue="hawa130" />
               </div>
-              <div className="p-6 pt-0 space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="signup-username">Username</Label>
-                  <Input id="signup-username" defaultValue="hawa130" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="signup-password">Password</Label>
-                  <Input id="signup-password" type="password" defaultValue="hawa130" />
-                </div>
-                <div className="py-1 flex items-center space-x-2">
-                  <Checkbox id="signup-terms" />
-                  <Label htmlFor="signup-terms">Accept terms and conditions</Label>
-                </div>
+              <div className="space-y-1">
+                <Label htmlFor="signup-password">Password</Label>
+                <Input id="signup-password" type="password" defaultValue="hawa130" />
               </div>
-              <div className="p-6 pt-0">
-                <Button variant="filled" color="primary">Sign up</Button>
+              <div className="py-1 flex items-center space-x-2">
+                <Checkbox id="signup-terms" />
+                <Label htmlFor="signup-terms">Accept terms and conditions</Label>
               </div>
+            </div>
+            <div className="p-6 pt-0">
+              <Button variant="filled" color="primary">Sign up</Button>
             </div>
           </TabsContent>
         </Tabs>
