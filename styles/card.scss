@@ -1,0 +1,49 @@
+@layer components {
+  .card {
+    @apply border bg-card text-card-fg rounded-xl shadow;
+  }
+
+  .card-header {
+    @apply p-6;
+  }
+
+  .card-title {
+    @apply text-xl font-semibold -my-1;
+  }
+
+  .card-description {
+    @apply mt-1.5 text-sm text-muted-fg;
+  }
+
+  .card-body {
+    @apply p-6 pt-0 flex flex-col gap-2;
+  }
+
+  .card-footer {
+    @apply p-6 pt-0 flex items-center;
+  }
+
+  .card-sm {
+    @apply border bg-card text-card-fg rounded-lg shadow-sm;
+  }
+
+  .card-header-sm {
+    @apply p-4;
+  }
+
+  .card-title-sm {
+    @apply text-lg font-semibold -my-[.3125rem];
+  }
+
+  .card-description-sm {
+    @apply mt-1 text-sm text-muted-fg;
+  }
+
+  .card-body-sm {
+    @apply p-4 pt-0 flex flex-col gap-2;
+  }
+
+  .card-footer-sm {
+    @apply p-4 pt-0 flex items-center;
+  }
+}

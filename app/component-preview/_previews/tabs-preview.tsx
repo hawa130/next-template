@@ -44,10 +44,11 @@ export const TabsPreview = () => {
             <TabsTrigger value="signup">Sign up</TabsTrigger>
           </TabsList>
           <TabsContent value="login">
-            <div className="p-6">
-              <h2 className="text-xl/none font-semibold">Welcome back</h2>
+            <div className="card-header">
+              <h2 className="card-title">Welcome back</h2>
+              <p className="card-description">Log in to your account</p>
             </div>
-            <div className="p-6 pt-0 space-y-2">
+            <div className="card-body">
               <div className="space-y-1">
                 <Label htmlFor="login-username" defaultValue="hawa130">Username</Label>
                 <Input id="login-username" />
@@ -57,15 +58,16 @@ export const TabsPreview = () => {
                 <Input id="login-password" type="password" />
               </div>
             </div>
-            <div className="p-6 pt-0">
+            <div className="card-footer">
               <Button variant="filled" color="primary">Log in</Button>
             </div>
           </TabsContent>
           <TabsContent value="signup">
-            <div className="p-6">
-              <h2 className="text-xl/none font-semibold">Create an account</h2>
+            <div className="card-header">
+              <h2 className="card-title">Create an account</h2>
+              <p className="card-description">Start your journey with us</p>
             </div>
-            <div className="p-6 pt-0 space-y-2">
+            <div className="card-body">
               <div className="space-y-1">
                 <Label htmlFor="signup-username">Username</Label>
                 <Input id="signup-username" defaultValue="hawa130" />
@@ -79,7 +81,7 @@ export const TabsPreview = () => {
                 <Label htmlFor="signup-terms">Accept terms and conditions</Label>
               </div>
             </div>
-            <div className="p-6 pt-0">
+            <div className="card-footer">
               <Button variant="filled" color="primary">Sign up</Button>
             </div>
           </TabsContent>
