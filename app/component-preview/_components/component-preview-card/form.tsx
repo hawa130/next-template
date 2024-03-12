@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
-import { SegmentedControl, SegmentedControlItem } from '@/components/ui/segmented-control'
+import { Segmented, SegmentedItem } from '@/components/ui/segmented'
 
 export type ComponentConfigFormItemBase = {
   displayName?: string
@@ -126,13 +126,13 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
                   control={form.control}
                   render={({ field }) => (
                     <FormControl>
-                      <SegmentedControl
+                      <Segmented
                         className="grid"
                         style={{ gridTemplateColumns: `repeat(${item.options.length}, minmax(0, 1fr))` }}
                         value={field.value} onValueChange={field.onChange}
                       >
-                        {item.options.map(opt => <SegmentedControlItem value={opt} key={opt}>{opt}</SegmentedControlItem>)}
-                      </SegmentedControl>
+                        {item.options.map(opt => <SegmentedItem value={opt} key={opt}>{opt}</SegmentedItem>)}
+                      </Segmented>
                     </FormControl>
                   )}
                 />

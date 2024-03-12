@@ -6,7 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'
 
-export const segmentedControlVariants = cva(
+export const segmentedVariants = cva(
   'inline-flex items-center justify-center rounded-lg p-1 bg-segment text-segment-fg',
   {
     variants: {
@@ -22,21 +22,21 @@ export const segmentedControlVariants = cva(
   },
 )
 
-export const SegmentedControl = React.forwardRef<
+export const Segmented = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & VariantProps<typeof segmentedControlVariants>
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & VariantProps<typeof segmentedVariants>
 >(({ className, size, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn(segmentedControlVariants({ size }), className)}
+      className={cn(segmentedVariants({ size }), className)}
       {...props}
       ref={ref}
     />
   )
 })
-SegmentedControl.displayName = 'SegmentedControl'
+Segmented.displayName = 'Segmented'
 
-export const SegmentedControlItem = React.forwardRef<
+export const SegmentedItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, ...props }, ref) => {
@@ -51,4 +51,4 @@ export const SegmentedControlItem = React.forwardRef<
     />
   )
 })
-SegmentedControlItem.displayName = 'SegmentedControlItem'
+SegmentedItem.displayName = 'SegmentedItem'
