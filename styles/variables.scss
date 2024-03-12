@@ -15,6 +15,11 @@
   --muted: 0 0% 96.1%;
   --muted-fg: 0 0% 45.1%;
 
+  --segment: 0 0% 96.1%;
+  --segment-fg: 0 0% 45.1%;
+  --segment-active: 0 0% 100%;
+  --segment-active-fg: 0 0% 3.9%;
+
   --accent: 0 0% 94.5%;
   --accent-dark: 0 0% 89.8%;
   --accent-fg: 0 0% 9%;
@@ -22,10 +27,10 @@
   --solid: 0 0% 9%;
   --solid-fg: 0 0% 98%;
 
-  --primary-light: 214 100% 97%;
-  --primary-pale: 213 97% 93%;
-  --primary: 221 83% 53%;
-  --primary-dark: 221 83% 43%;
+  --primary-light: 180 50% 95%;
+  --primary-pale: 180 53% 86%;
+  --primary: 181 100% 29%;
+  --primary-dark: 180 100% 26%;
 
   --destructive-light: 359 100% 97%;
   --destructive-pale: 359 100% 94%;
@@ -47,7 +52,7 @@
   --info: 210 92% 45%;
   --info-dark: 210 92% 35%;
 
-  --body: 0 0% 98%;
+  --body: 0 0% 98.3%;
   --button: 0 0% 100%;
 
   --border: 0 0% 89.8%;
@@ -74,17 +79,22 @@
   --muted: 0 0% 14.9%;
   --muted-fg: 0 0% 63.9%;
 
-  --accent: 0 0% 14.9%;
+  --segment: 0 0% 10%;
+  --segment-fg: 0 0% 63.9%;
+  --segment-active: 0 0% 20.8%;
+  --segment-active-fg: 0 0% 98%;
+
+  --accent: 0 0% 16.9%;
   --accent-dark: 0 0% 20%;
   --accent-fg: 0 0% 98%;
 
   --solid: 0 0% 98%;
   --solid-fg: 0 0% 9%;
 
-  --primary-light: 226 57% 16%;
-  --primary-pale: 224 64% 22%;
-  --primary: 213 94% 68%;
-  --primary-dark: 213 94% 78%;
+  --primary-light: 189 100% 7%;
+  --primary-pale: 187 92% 12%;
+  --primary: 179 67% 40%;
+  --primary-dark: 175 52% 65%;
 
   --destructive-light: 358 76% 10%;
   --destructive-pale: 357 89% 16%;

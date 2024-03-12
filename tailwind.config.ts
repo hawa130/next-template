@@ -93,11 +93,13 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           fg: 'hsl(var(--card-fg))',
         },
-        code: {
-          fg: 'var(--shiki-light)',
-          bg: 'var(--shiki-light-bg)',
-          'fg-dark': 'var(--shiki-dark)',
-          'bg-dark': 'var(--shiki-dark-bg)',
+        segment: {
+          DEFAULT: 'hsl(var(--segment))',
+          fg: 'hsl(var(--segment-fg))',
+          active: {
+            DEFAULT: 'hsl(var(--segment-active))',
+            fg: 'hsl(var(--segment-active-fg))',
+          },
         }
       },
       borderRadius: {

@@ -4,6 +4,7 @@ import {
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
+import { Label } from '@/components/ui/label'
 
 export const CheckboxPreview = () => {
   return (
@@ -14,12 +15,7 @@ export const CheckboxPreview = () => {
       <ComponentPreviewCard>
         <div className="flex items-center space-x-2">
           <Checkbox id="terms" />
-          <label
-            htmlFor="terms"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Accept terms and conditions
-          </label>
+          <Label htmlFor="terms">Accept terms and conditions</Label>
         </div>
       </ComponentPreviewCard>
     </section>

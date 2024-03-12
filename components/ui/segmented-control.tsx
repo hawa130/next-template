@@ -7,7 +7,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 export const segmentedControlVariants = cva(
-  'inline-flex items-center justify-center rounded-lg bg-muted p-1 text-muted-fg',
+  'inline-flex items-center justify-center rounded-lg p-1 bg-segment text-segment-fg',
   {
     variants: {
       size: {
@@ -44,7 +44,7 @@ export const SegmentedControlItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        'relative data-[state=checked]:z-[1] inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:bg-background data-[state=checked]:text-foreground data-[state=checked]:shadow before:absolute before:-left-[0.5px] before:h-5 not-first:before:border-l before:transition-colors before:data-[state=checked]:border-l-transparent before:next-sibling:data-[state=checked]:border-l-transparent',
+        'relative data-[state=checked]:z-[1] inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:bg-segment-active data-[state=checked]:text-segment-active-fg data-[state=checked]:shadow before:absolute before:-left-[0.5px] before:h-5 not-first:before:data-[state=unchecked]:border-l before:transition-colors before:[&+input+button]:data-[state=checked]:border-l-transparent hover:data-[state=unchecked]:bg-accent hover:data-[state=unchecked]:text-accent-fg active:data-[state=unchecked]:bg-accent-dark',
         className,
       )}
       {...props}
