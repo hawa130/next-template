@@ -5,6 +5,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { cva, VariantProps } from 'class-variance-authority'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -72,16 +73,33 @@ const DropdownMenuContent = React.forwardRef<
 ))
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
-const DropdownMenuItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
+const dropdownMenuVariants = cva(
+  'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+  {
+    variants: {
+      variant: {
+        default: 'focus:bg-accent focus:text-accent-fg',
+        primary: 'focus:bg-primary-light focus:text-primary',
+        destructive: 'focus:bg-destructive-light focus:text-destructive',
+        warning: 'focus:bg-warning-light focus:text-warning',
+        success: 'focus:bg-success-light focus:text-success',
+        info: 'focus:bg-info-light focus:text-info',
+      },
+    },
+  },
+)
+
+export interface DropdownMenuItemProps extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>, VariantProps<typeof dropdownMenuVariants> {
   inset?: boolean
 }
->(({ className, inset, ...props }, ref) => (
+
+const DropdownMenuItem = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  DropdownMenuItemProps
+>(({ className, variant, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
-    className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-fg data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+    className={cn(dropdownMenuVariants({ variant }),
       inset && 'pl-8',
       className,
     )}
