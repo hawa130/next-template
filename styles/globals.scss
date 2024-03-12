@@ -13,7 +13,7 @@
   }
 
   :focus-visible {
-    @apply outline-ring outline-offset-2 outline-2;
+    @apply outline-ring/60 outline-offset-0 outline-2;
   }
 
   body {

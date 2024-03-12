@@ -1,6 +1,11 @@
 'use client'
 
+import { useState } from 'react'
+import { cn } from '@/lib/utils'
+
 import { ModeToggle } from './_components/mode-toggle'
+import { GrayToggle } from './_components/gray-toggle'
+
 import { ButtonPreview } from './_previews/button-preview'
 import { ToastPreview } from './_previews/toast-preview'
 import { TooltipPreview } from './_previews/tooltip-preview'
@@ -16,13 +21,18 @@ import { AlertPreview } from './_previews/alert-preview'
 import { TabsPreview } from './_previews/tabs-preview'
 
 export default function Page() {
+  const [isGray, setIsGray] = useState(false)
+
   return (
-    <main className="mx-auto max-w-5xl px-5 py-8">
+    <main className={cn('mx-auto max-w-5xl px-5 py-8', isGray && 'grayscale')}>
       <div className="flex justify-between mb-4">
         <h1 className="text-2xl font-semibold leading-none tracking-tight">
           Component Preview
         </h1>
-        <ModeToggle />
+        <div className="flex items-center gap-2">
+          <GrayToggle value={isGray} onChange={setIsGray} />
+          <ModeToggle />
+        </div>
       </div>
       <div className="space-y-6">
         <ButtonPreview />

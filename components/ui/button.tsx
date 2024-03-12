@@ -58,7 +58,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'primary',
-        className: 'bg-primary text-fg-invert hover:bg-primary/90 active:bg-primary-dark',
+        className: 'bg-primary text-fg-invert hover:bg-primary-deep active:bg-primary-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -78,12 +78,12 @@ const buttonVariants = cva(
       {
         variant: 'soft',
         color: 'primary',
-        className: 'text-primary bg-primary-light hover:bg-primary-light/90 active:text-primary-dark active:bg-primary-pale',
+        className: 'text-primary bg-primary-light hover:bg-primary-soft active:text-primary-dark active:bg-primary-pale',
       },
       {
         variant: 'filled',
         color: 'destructive',
-        className: 'bg-destructive text-fg-invert hover:bg-destructive/90 active:bg-destructive-dark',
+        className: 'bg-destructive text-fg-invert hover:bg-destructive-deep active:bg-destructive-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -103,12 +103,12 @@ const buttonVariants = cva(
       {
         variant: 'soft',
         color: 'destructive',
-        className: 'text-destructive bg-destructive-light hover:bg-destructive-light/90 active:text-destructive-dark active:bg-destructive-pale',
+        className: 'text-destructive bg-destructive-light hover:bg-destructive-soft active:text-destructive-dark active:bg-destructive-pale',
       },
       {
         variant: 'filled',
         color: 'warning',
-        className: 'bg-warning text-fg-invert hover:bg-warning/90 active:bg-warning-dark',
+        className: 'bg-warning text-fg-invert hover:bg-warning-deep active:bg-warning-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -128,12 +128,12 @@ const buttonVariants = cva(
       {
         variant: 'soft',
         color: 'warning',
-        className: 'text-warning bg-warning-light hover:bg-warning-light/90 active:text-warning-dark active:bg-warning-pale',
+        className: 'text-warning bg-warning-light hover:bg-warning-soft active:text-warning-dark active:bg-warning-pale',
       },
       {
         variant: 'filled',
         color: 'success',
-        className: 'bg-success text-fg-invert hover:bg-success/90 active:bg-success-dark',
+        className: 'bg-success text-fg-invert hover:bg-success-deep active:bg-success-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -153,12 +153,12 @@ const buttonVariants = cva(
       {
         variant: 'soft',
         color: 'success',
-        className: 'text-success bg-success-light hover:bg-success-light/90 active:text-success-dark active:bg-success-pale',
+        className: 'text-success bg-success-light hover:bg-success-soft active:text-success-dark active:bg-success-pale',
       },
       {
         variant: 'filled',
         color: 'info',
-        className: 'bg-info text-fg-invert hover:bg-info/90 active:bg-info-dark',
+        className: 'bg-info text-fg-invert hover:bg-info-deep active:bg-info-dark',
       },
       {
         variant: ['outline', 'dashed'],
@@ -178,9 +178,8 @@ const buttonVariants = cva(
       {
         variant: 'soft',
         color: 'info',
-        className: 'text-info bg-info-light hover:bg-info-light/90 active:text-info-dark active:bg-info-pale',
+        className: 'text-info bg-info-light hover:bg-info-soft active:text-info-dark active:bg-info-pale',
       },
-
     ],
     defaultVariants: {
       variant: 'outline',

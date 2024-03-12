@@ -7,6 +7,7 @@ import {
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
+import { Input } from '@/components/ui/input'
 
 type SliderProps = ComponentProps<typeof Slider>
 
@@ -48,11 +49,18 @@ export const SliderPreview = () => {
         <ComponentPreviewTitle>Slider & Progress</ComponentPreviewTitle>
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
-        <div className="w-full flex items-center">
-          <Slider value={[value]} onValueChange={([v]) => setValue(v)} {...sliderProps} />
-          <span className="ml-4 text-sm">{value}</span>
+        <div className="w-2/3">
+          <Input
+            className="ml-auto w-[72px]"
+            type="number"
+            value={value}
+            onChange={(e) => setValue(Number(e.target.value))}
+          />
         </div>
         <div className="w-2/3 mt-6">
+        <Slider value={[value]} onValueChange={([v]) => setValue(v)} {...sliderProps} />
+        </div>
+        <div className="w-2/3 mt-7">
           <Progress value={value / sliderProps.max! * 100} />
         </div>
       </ComponentPreviewCard>
