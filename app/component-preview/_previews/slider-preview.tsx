@@ -8,6 +8,7 @@ import {
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
 import { Input } from '@/components/ui/input'
+import { RingProgress } from '@/components/ui/ring-progress'
 
 type SliderProps = ComponentProps<typeof Slider>
 
@@ -61,7 +62,14 @@ export const SliderPreview = () => {
         <Slider value={[value]} onValueChange={([v]) => setValue(v)} {...sliderProps} />
         </div>
         <div className="w-2/3 mt-7">
-          <Progress value={value / sliderProps.max! * 100} />
+          <Progress value={value} max={sliderProps.max!} />
+        </div>
+        <div className="mt-7">
+          <RingProgress value={value} max={sliderProps.max!}>
+            <div className="text-sm font-medium">
+              {(value / sliderProps.max! * 100).toFixed(1)}%
+            </div>
+          </RingProgress>
         </div>
       </ComponentPreviewCard>
     </section>
