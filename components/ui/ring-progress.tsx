@@ -81,7 +81,7 @@ const Curve = forwardRef<SVGCircleElement, CurveProps>(({
   ...props
 }, ref) => {
   const radius = (size - thickness) / 2
-  const deg = (Math.PI * radius * 2) / 100
+  const perimeter = Math.PI * radius * 2
 
   return (
     <circle
@@ -92,11 +92,10 @@ const Curve = forwardRef<SVGCircleElement, CurveProps>(({
       cx={size / 2}
       cy={size / 2}
       r={radius}
-      transform={root ? `scale(1, -1) translate(0, -${size})` : undefined}
       strokeWidth={thickness}
       strokeLinecap={!root && rounded ? 'round' : 'butt'}
-      strokeDasharray={root ? undefined : `${100 * deg}, ${100 * deg}`}
-      strokeDashoffset={root ? undefined : (100 - Math.min(value, max) / max * 100) * deg}
+      strokeDasharray={root ? undefined : `${perimeter}, ${perimeter}`}
+      strokeDashoffset={root ? undefined : (1 - Math.min(value, max) / max) * perimeter}
       {...props}
     />
   )
