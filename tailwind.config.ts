@@ -153,6 +153,9 @@ const config: Config = {
         'collapsible-down': 'collapsible-down 0.2s ease-out',
         'collapsible-up': 'collapsible-up 0.2s ease-out',
       },
+      transitionDuration: {
+        DEFAULT: '100ms',
+      },
     },
   },
   plugins: [

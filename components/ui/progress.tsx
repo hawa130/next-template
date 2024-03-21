@@ -40,7 +40,7 @@ const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root
     >
       <ProgressPrimitive.Indicator
         className={cn(
-          'bg-primary transition-[width]',
+          'bg-primary transition-[width] duration-200',
           rounded && 'rounded-full',
           rangeClassname,
         )}
