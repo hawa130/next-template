@@ -1,35 +1,27 @@
-import { useState } from 'react'
+import { Search } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
+import { Input, inputWrapperVariants } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+
 import {
-  ComponentConfigForm,
   ComponentPreviewCard,
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Input, inputWrapperVariants } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import { Search } from 'lucide-react'
+import { useConfigForm } from '../_hooks/use-config-form'
 
 type PropsForm = { disabled: boolean }
 
 export const InputPreview = () => {
-  const [props, setProps] = useState<PropsForm>({
-    disabled: false,
-  })
-
-  const form = (
-    <ComponentConfigForm<PropsForm>
-      items={[
-        {
-          name: 'disabled',
-          type: 'switch',
-          defaultValue: false,
-        },
-      ]}
-      onChange={setProps}
-    />
-  )
+  const { props, form } = useConfigForm<PropsForm>([
+    {
+      name: 'disabled',
+      type: 'switch',
+      defaultValue: false,
+    },
+  ])
 
   return (
     <section>
@@ -49,7 +41,7 @@ export const InputPreview = () => {
                 <Search className="h-4 w-4 mr-2 text-muted-fg" />
                 <input placeholder="Search..." {...props} />
               </label>
-              <Button className="flex-shrink-0" size="icon-md" icon={<Search className="h-4 w-4" />} />
+              <Button className="flex-shrink-0" size="icon-sm" icon={<Search className="h-4 w-4" />} />
             </div>
           </section>
           <section className="w-full">

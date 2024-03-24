@@ -9,7 +9,7 @@
     @apply prose-tr:m-0 prose-tr:border-t prose-tr:p-0 prose-th:border prose-th:px-4 prose-th:py-2 prose-td:border prose-td:px-4 prose-td:py-2;
 
     // code
-    @apply prose-code:before:content-none prose-code:after:content-none prose-code:font-mono prose-code:font-medium prose-code:rounded prose-code:mx-[0.05em] prose-code:px-[0.3em] prose-code:py-[0.2em] prose-code:bg-muted prose-code:dark:bg-neutral-900 prose-code:text-code-fg;
+    @apply prose-code:before:content-none prose-code:after:content-none prose-code:font-mono prose-code:font-medium prose-code:rounded-xs prose-code:mx-[0.05em] prose-code:px-[0.3em] prose-code:py-[0.2em] prose-code:bg-muted prose-code:dark:bg-neutral-900 prose-code:text-code-fg;
 
     // quote
     @apply prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:pl-5 prose-blockquote:text-foreground/60;
@@ -32,7 +32,7 @@
 
     :is(:where(figure):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
       img {
-        @apply rounded mx-auto;
+        @apply rounded-xs mx-auto;
       }
 
       &[data-rehype-pretty-code-figure] {

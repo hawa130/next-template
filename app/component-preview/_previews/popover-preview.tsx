@@ -1,12 +1,12 @@
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
 
 export const PopoverPreview = () => {
   return (

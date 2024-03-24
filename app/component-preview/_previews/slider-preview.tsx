@@ -1,48 +1,37 @@
 import { ComponentProps, useState } from 'react'
 import { Slider } from '@/components/ui/slider'
 import { Progress } from '@/components/ui/progress'
+import { Input } from '@/components/ui/input'
+import { RingProgress } from '@/components/ui/ring-progress'
 import {
-  ComponentConfigForm,
   ComponentPreviewCard,
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Input } from '@/components/ui/input'
-import { RingProgress } from '@/components/ui/ring-progress'
+import { useConfigForm } from '../_hooks/use-config-form'
 
 type SliderProps = ComponentProps<typeof Slider>
 
 export const SliderPreview = () => {
-  const [sliderProps, setSliderProps] = useState<SliderProps>({
-    min: 0,
-    max: 100,
-    step: 1,
-  })
-
   const [value, setValue] = useState(50)
 
-  const form = (
-    <ComponentConfigForm<SliderProps>
-      items={[
-        {
-          name: 'min',
-          type: 'number',
-          defaultValue: 0,
-        },
-        {
-          name: 'max',
-          type: 'number',
-          defaultValue: 100,
-        },
-        {
-          name: 'step',
-          type: 'number',
-          defaultValue: 1,
-        },
-      ]}
-      onChange={setSliderProps}
-    />
-  )
+  const { props: sliderProps, form } = useConfigForm<SliderProps>([
+    {
+      name: 'min',
+      type: 'number',
+      defaultValue: 0,
+    },
+    {
+      name: 'max',
+      type: 'number',
+      defaultValue: 100,
+    },
+    {
+      name: 'step',
+      type: 'number',
+      defaultValue: 1,
+    },
+  ])
 
   return (
     <section>

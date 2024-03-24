@@ -1,36 +1,27 @@
-import { ComponentProps, useState } from 'react'
-import {
-  ComponentConfigForm,
-  ComponentPreviewCard,
-  ComponentPreviewHeader,
-  ComponentPreviewTitle,
-} from '../_components/component-preview-card'
+import { ComponentProps } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import {
+  ComponentPreviewCard,
+  ComponentPreviewHeader,
+  ComponentPreviewTitle,
+} from '../_components/component-preview-card'
+import { useConfigForm } from '../_hooks/use-config-form'
 
 type FormProps = Partial<ComponentProps<typeof TabsList>>
 
 export const TabsPreview = () => {
-  const [props, setProps] = useState<FormProps>({
-    variant: 'default',
-  })
-
-  const form = (
-    <ComponentConfigForm<FormProps>
-      items={[
-        {
-          name: 'variant',
-          type: 'radio',
-          options: ['default', 'line', 'button'],
-          defaultValue: 'default',
-        },
-      ]}
-      onChange={setProps}
-    />
-  )
+  const { props, form } = useConfigForm<FormProps>([
+    {
+      name: 'variant',
+      type: 'radio',
+      options: ['default', 'line', 'button'],
+      defaultValue: 'default',
+    },
+  ])
 
   return (
     <section>

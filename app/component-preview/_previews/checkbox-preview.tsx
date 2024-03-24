@@ -1,10 +1,10 @@
 import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Label } from '@/components/ui/label'
 
 export const CheckboxPreview = () => {
   return (

@@ -1,12 +1,12 @@
 import { CalendarDays } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Button } from '@/components/ui/button'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 export const HoverCardPreview = () => {
   return (

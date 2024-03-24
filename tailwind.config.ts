@@ -113,6 +113,7 @@ const config: Config = {
         }
       },
       borderRadius: {
+        DEFAULT: 'var(--radius)',
         xl: 'calc(var(--radius) + 4px)',
         'xl-1': 'calc(var(--radius) + 3px)',
         lg: 'var(--radius)',
@@ -121,6 +122,8 @@ const config: Config = {
         'md-1': 'calc(var(--radius) - 3px)',
         sm: 'calc(var(--radius) - 4px)',
         'sm-1': 'calc(var(--radius) - 5px)',
+        xs: 'calc(var(--radius) - 6px)',
+        'xs-1': 'calc(var(--radius) - 7px)',
       },
       boxShadow: {
         'solid-xs': '1px 1px hsl(var(--solid))',

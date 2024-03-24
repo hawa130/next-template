@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import type { DateRange } from 'react-day-picker'
 import { addDays } from 'date-fns'
+
+import { Calendar } from '@/components/ui/calendar'
+
 import {
-  ComponentConfigForm,
   ComponentPreviewCard,
   ComponentPreviewHeader,
   ComponentPreviewTitle,
 } from '../_components/component-preview-card'
-import { Calendar } from '@/components/ui/calendar'
+import { useConfigForm } from '../_hooks/use-config-form'
 
 type PropsForm = {
   range: boolean
@@ -21,29 +23,19 @@ export const CalendarPreview = () => {
     to: addDays(new Date(), 25),
   })
 
-  const [props, setProps] = useState<PropsForm>({
-    range: false,
-    language: 'en',
-  })
-
-  const form = (
-    <ComponentConfigForm<PropsForm>
-      items={[
-        {
-          name: 'range',
-          type: 'switch',
-          defaultValue: false,
-        },
-        {
-          name: 'language',
-          type: 'select',
-          options: ['en', 'zh'],
-          defaultValue: 'en',
-        },
-      ]}
-      onChange={setProps}
-    />
-  )
+  const { props, form } = useConfigForm<PropsForm>([
+    {
+      name: 'range',
+      type: 'switch',
+      defaultValue: false,
+    },
+    {
+      name: 'language',
+      type: 'select',
+      options: ['en', 'zh'],
+      defaultValue: 'en',
+    },
+  ])
 
   return (
     <section>
