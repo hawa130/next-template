@@ -86,6 +86,9 @@ const dropdownMenuVariants = cva(
         info: 'focus:bg-info-light focus:text-info',
       },
     },
+    defaultVariants: {
+      variant: 'default',
+    },
   },
 )
 
