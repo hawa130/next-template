@@ -21,7 +21,12 @@ export const ComponentPreviewCard = ({ className, children, form, ...props }: Co
 }
 
 export const ComponentPreviewSection = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
-  return <div className={cn('flex flex-col items-center justify-center p-4 min-h-[120px]', className)} {...props} />
+  return (
+    <div
+      className={cn('flex flex-col items-center justify-center p-4 bg-dots min-h-[120px]', className)}
+      {...props}
+    />
+  )
 }
 
 export * from './header'

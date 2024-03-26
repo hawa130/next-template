@@ -1,0 +1,10 @@
+@layer components {
+  .bg-dots {
+    --hw-bg-color: hsl(var(--background));
+    --hw-dot-color: hsl(var(--border) / 70%);
+    background: linear-gradient(90deg, var(--hw-bg-color) 10px, transparent 1%) 50%,
+    linear-gradient(var(--hw-bg-color) 10px, transparent 1%) 50%,
+    var(--hw-dot-color);
+    background-size: 12px 12px;
+  }
+}
