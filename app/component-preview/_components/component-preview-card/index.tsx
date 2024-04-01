@@ -9,13 +9,13 @@ export const ComponentPreviewCard = ({ className, children, form, ...props }: Co
   return (
     <div
       className={cn('overflow-auto border rounded-lg',
-        !!form && 'grid grid-cols-[minmax(0,1fr)_240px]',
+        !!form && 'grid md:grid-cols-[minmax(0,1fr)_240px]',
         className,
       )}
       {...props}
     >
       <ComponentPreviewSection>{children}</ComponentPreviewSection>
-      {!!form && <div className="border-l p-4 bg-body">{form}</div>}
+      {!!form && <div className="<md:border-t md:border-l p-4 bg-body">{form}</div>}
     </div>
   )
 }

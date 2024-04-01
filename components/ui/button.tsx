@@ -217,6 +217,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
+        type={asChild ? undefined : 'button'}
         disabled={disabled || loading}
         data-loading={loading ? '' : undefined}
         className={cn(buttonVariants({ variant, size, color, className }))}

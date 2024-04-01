@@ -7,7 +7,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 export const segmentedVariants = cva(
-  'inline-flex items-center justify-center rounded-lg p-1 bg-segment text-segment-fg',
+  'relative inline-flex items-center justify-center rounded-lg p-1 bg-segment text-segment-fg',
   {
     variants: {
       size: {
