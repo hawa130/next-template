@@ -73,7 +73,7 @@ const DropdownMenuContent = React.forwardRef<
 ))
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
-const dropdownMenuVariants = cva(
+export const menuItemVariants = cva(
   'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
   {
     variants: {
@@ -92,7 +92,9 @@ const dropdownMenuVariants = cva(
   },
 )
 
-export interface DropdownMenuItemProps extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>, VariantProps<typeof dropdownMenuVariants> {
+export interface DropdownMenuItemProps
+  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>,
+    VariantProps<typeof menuItemVariants> {
   inset?: boolean
 }
 
@@ -102,7 +104,7 @@ const DropdownMenuItem = React.forwardRef<
 >(({ className, variant, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
-    className={cn(dropdownMenuVariants({ variant }),
+    className={cn(menuItemVariants({ variant }),
       inset && 'pl-8',
       className,
     )}
