@@ -41,7 +41,7 @@ export const InputPreview = () => {
                 <Search className="h-4 w-4 mr-2 text-muted-fg" />
                 <input placeholder="Search..." {...props} />
               </label>
-              <Button className="flex-shrink-0" size="icon-sm" icon={<Search className="h-4 w-4" />} />
+              <Button className="flex-shrink-0" size="icon-md" icon={<Search className="h-4 w-4" />} />
             </div>
           </section>
           <section className="w-full">
