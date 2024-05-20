@@ -103,6 +103,10 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           fg: 'hsl(var(--card-fg))',
         },
+        code: {
+          DEFAULT: 'hsl(var(--code))',
+          fg: 'hsl(var(--code-fg))',
+        },
         segment: {
           DEFAULT: 'hsl(var(--segment))',
           fg: 'hsl(var(--segment-fg))',

@@ -15,7 +15,7 @@
     @apply prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:pl-5 prose-blockquote:text-foreground/60;
 
     // anchor
-    @apply prose-a:font-normal prose-a:transition prose-a:text-[--tw-prose-body] prose-a:underline-offset-link prose-a:decoration-foreground/25 hover:prose-a:decoration-primary hover:prose-a:decoration-2 hover:prose-a:text-foreground;
+    @apply prose-a:font-normal prose-a:transition prose-a:text-[--tw-prose-body] prose-a:decoration-foreground/25 hover:prose-a:decoration-primary hover:prose-a:decoration-2 hover:prose-a:text-foreground;
 
     // figure
     @apply prose-figcaption:text-center;
@@ -85,7 +85,7 @@
         }
 
         &[data-theme*=" "], &[data-theme*=" "] span {
-          @apply text-code-fg bg-code-bg dark:text-code-fg-dark dark:bg-code-bg-dark;
+          @apply text-code-fg bg-code;
         }
 
         &[data-language="plaintext"], [data-language="plaintext"] span {
