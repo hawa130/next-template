@@ -3,7 +3,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'
-import { Loader2 } from 'lucide-react'
+import { Spinner } from '@/components/ui/spinner'
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50',
@@ -27,11 +27,11 @@ const buttonVariants = cva(
         info: '',
       },
       size: {
-        '2xs': 'h-5 px-2 text-xs font-semibold',
-        xs: 'h-6 px-2.5 text-xs',
-        sm: 'h-8 px-3 text-sm',
-        md: 'h-9 px-4 text-sm',
-        lg: 'h-11 px-5 text-base',
+        '2xs': 'h-5 px-2 text-xs font-semibold gap-1',
+        xs: 'h-6 px-2.5 text-xs gap-1',
+        sm: 'h-8 px-3 text-sm gap-1.5',
+        md: 'h-9 px-4 text-sm gap-2',
+        lg: 'h-11 px-5 text-base gap-2',
         'icon-2xs': 'h-4 w-4',
         'icon-xs': 'h-6 w-6',
         'icon-sm': 'h-8 w-8',
@@ -192,8 +192,6 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
-  icon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
   loading?: boolean;
   asChild?: boolean
 }
@@ -203,8 +201,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     className,
     children,
     loading,
-    icon,
-    rightIcon,
     variant,
     size = 'md',
     asChild = false,
@@ -213,7 +209,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ...props
   }, ref) => {
     const Comp = asChild ? Slot : 'button'
-    const isIcon = !!size?.startsWith('icon')
 
     return (
       <Comp
@@ -225,21 +220,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <Loader2 className={cn('w-4 h-4 animate-spin', {
-            'mr-2': children,
-            'w-3': size === 'sm',
-            'w-3 mr-1.5': size?.endsWith('xs'),
+          <Spinner className={cn({
+            'size-3': ['icon-2xs', '2xs', 'icon-xs', 'xs'].includes(size!),
+            'size-4': ['icon-sm', 'sm', 'icon-md', 'md'].includes(size!),
+            'size-5': ['icon-lg', 'lg'].includes(size!),
           })} />
         )}
-        {icon && !loading && (
-          <span className={cn({
-            'mr-2 w-4': !isIcon && children,
-            'w-3': size === 'sm',
-            'w-3 mr-1.5': size?.endsWith('xs'),
-          })}>{icon}</span>
-        )}
         <Slottable>{children}</Slottable>
-        {rightIcon && <span className="ml-2">{rightIcon}</span>}
       </Comp>
     )
   },
