@@ -1,5 +1,7 @@
 @layer components {
   .prose.typography {
+    @apply max-w-none;
+
     @apply prose-neutral dark:prose-invert;
 
     // scroll-margin
@@ -66,35 +68,10 @@
     }
 
     :is(:where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+      @apply bg-transparent text-muted-fg;
+
       code {
-        counter-reset: line;
-        @apply font-normal;
-
-        & > [data-line]::before {
-          counter-increment: line;
-          content: counter(line);
-          @apply inline-block w-5 mr-4 text-right text-gray-400;
-        }
-
-        &[data-line-numbers-max-digits="2"] > [data-line]::before {
-          @apply w-8;
-        }
-
-        &[data-line-numbers-max-digits="3"] > [data-line]::before {
-          @apply w-12;
-        }
-
-        &[data-theme*=" "], &[data-theme*=" "] span {
-          @apply text-code-fg bg-code;
-        }
-
-        &[data-language="plaintext"], [data-language="plaintext"] span {
-          @apply text-[--tw-prose-body];
-        }
-      }
-
-      [data-line] {
-        @apply px-2;
+        @apply p-0 bg-transparent;
       }
     }
   }
