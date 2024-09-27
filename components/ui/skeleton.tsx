@@ -1,19 +1,24 @@
-import { Fragment, HTMLAttributes, JSX, ReactNode } from 'react'
+import { Fragment, HTMLAttributes, ReactNode } from 'react'
+import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/lib/utils'
 import { repeat } from '@/lib/utils/repeat'
 
-type SkeletonProps<TTagName extends keyof JSX.IntrinsicElements = 'div'> = {
-	tagName?: TTagName
-} & JSX.IntrinsicElements[TTagName]
-
-export function Skeleton<TTagName extends keyof JSX.IntrinsicElements = 'div'>({
-	tagName: Tag = 'div' as TTagName,
+function Skeleton({
 	className,
+	asChild,
 	...props
-}: SkeletonProps<TTagName>) {
-	// @ts-ignore
-	return <Tag className={cn('animate-pulse rounded-md bg-primary/10', className)} {...props} />
+}: HTMLAttributes<HTMLDivElement> & {
+	asChild?: boolean
+}) {
+	const Comp = asChild ? Slot : 'div'
+
+	return (
+		<Comp
+			className={cn('animate-pulse rounded-md bg-muted-fg/15', className)}
+			{...props}
+		/>
+	)
 }
 
 /**
@@ -34,19 +39,25 @@ export function TextSkeleton({ className, chars, full, style, ...props }: TextSk
 		// 内层用于提供灰块视觉的高度
 		<span>
 			<Skeleton
-				tagName="span"
 				className={cn(
 					'-my-[.1em] inline-block max-w-full leading-[1.2] after:invisible after:content-["永"]',
 					full && 'w-full',
 					className,
 				)}
 				style={mergedStyle}
+				asChild
 				{...props}
-			/>
+			>
+				<span />
+			</Skeleton>
 		</span>
 	)
 }
 
+/**
+ * 多行文本骨架
+ * @param lines 行数，默认值为3
+ */
 export function LinesSkeleton({ lines = 3 }: { lines?: number }): ReactNode {
 	return [
 		...repeat(lines - 1, (i) => (
