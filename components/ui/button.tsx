@@ -31,12 +31,14 @@ const buttonVariants = cva(
         xs: 'h-6 px-2.5 text-xs gap-1',
         sm: 'h-8 px-3 text-sm gap-1.5',
         md: 'h-9 px-4 text-sm gap-2',
-        lg: 'h-11 px-5 text-base gap-2',
+        lg: 'h-11 px-5 text-base gap-2 rounded-lg',
+        xl: 'h-14 px-6 text-lg gap-3 rounded-xl',
         'icon-2xs': 'h-4 w-4',
         'icon-xs': 'h-6 w-6',
         'icon-sm': 'h-8 w-8',
         'icon-md': 'h-9 w-9',
         'icon-lg': 'h-11 w-11',
+        'icon-xl': 'h-14 w-14',
       },
     },
     compoundVariants: [
@@ -53,7 +55,7 @@ const buttonVariants = cva(
       {
         variant: ['ghost', 'subtle'],
         color: 'default',
-        className: 'hover:text-accent-fg',
+        className: 'hover:text-accent-fg hover:bg-accent active:bg-accent-dark',
       },
       {
         variant: 'filled',
