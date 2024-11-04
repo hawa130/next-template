@@ -153,12 +153,33 @@ const config: Config = {
           from: { height: 'var(--radix-collapsible-content-height)' },
           to: { height: '0' },
         },
+        'spinner-inner': {
+          '0%': {
+            strokeDasharray: '0 150',
+            strokeDashoffset: '0',
+          },
+          '47.5%': {
+            strokeDasharray: '42 150',
+            strokeDashoffset: '-16',
+          },
+          '95%, 100%': {
+            strokeDasharray: '42 150',
+            strokeDashoffset: '-59',
+          },
+        },
+        'spinner-outer': {
+          '100%': {
+            transform: 'rotate(360deg)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'collapsible-down': 'collapsible-down 0.2s ease-out',
         'collapsible-up': 'collapsible-up 0.2s ease-out',
+        'spinner-inner': 'spinner-inner 1.5s ease-in-out infinite',
+        'spinner-outer': 'spinner-outer 2s linear infinite',
       },
       transitionDuration: {
         DEFAULT: '100ms',
